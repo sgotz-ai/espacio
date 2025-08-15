@@ -1,6 +1,5 @@
 (function () {
-  const targetMilliseconds = 5500;
-  const toleranceMilliseconds = 25; // Win window ±25ms around 5.500s
+  const targetCentiseconds = 314; // 3.14 s
 
   const unlockKey = 'regiardo_unlocked';
   const unlockOverlay = document.getElementById('unlockOverlay');
@@ -52,7 +51,7 @@
   }
 
   function formatTime(ms) {
-    return (ms / 1000).toFixed(3) + ' s';
+    return (ms / 1000).toFixed(2) + ' s';
   }
 
   function updateTimer() {
@@ -79,22 +78,22 @@
     const finalMs = elapsedMs;
     timerDisplay.textContent = formatTime(finalMs);
 
-    const delta = Math.abs(finalMs - targetMilliseconds);
-    if (delta <= toleranceMilliseconds) {
+    const roundedCentiseconds = Math.round(finalMs / 10);
+    if (roundedCentiseconds === targetCentiseconds) {
       statusEl.textContent = 'Perfect!';
       showWinSign();
       isGameOver = true;
     } else {
-      const signed = Math.round(finalMs - targetMilliseconds);
-      const sign = signed >= 0 ? '+' : '';
-      statusEl.textContent = `Missed by ${sign}${signed} ms • Press Space to try again`;
+      const signedMs = Math.round(finalMs - targetCentiseconds * 10);
+      const sign = signedMs >= 0 ? '+' : '';
+      statusEl.textContent = `Missed by ${sign}${signedMs} ms • Press Space to try again`;
     }
   }
 
   function resetIfStopped() {
     if (isRunning || isGameOver) return;
     elapsedMs = 0;
-    timerDisplay.textContent = '0.000 s';
+    timerDisplay.textContent = '0.00 s';
     statusEl.textContent = 'Press Space to start • Press Space again to stop';
   }
 
