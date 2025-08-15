@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.5 Second Challenge</title>
+  <link rel="stylesheet" href="/workspace/styles.css">
+</head>
+<body>
+  <div id="unlockOverlay" class="overlay" aria-modal="true" role="dialog">
+    <div class="modal">
+      <h2>Unlock</h2>
+      <p>Enter the clue to start the game.</p>
+      <form id="unlockForm" autocomplete="off">
+        <input id="unlockInput" type="password" inputmode="text" placeholder="Enter clue" aria-label="Unlock clue" />
+        <button id="unlockButton" type="submit">Unlock</button>
+      </form>
+      <p class="hint">Hint: It's 8 letters.</p>
+      <p id="unlockError" class="error" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <main class="app" aria-live="polite">
+    <h1>5.5 Second Challenge</h1>
+    <div class="target">Target: <strong>5.500 s</strong></div>
+
+    <div class="timer" id="timerDisplay">0.000 s</div>
+
+    <div id="status" class="status">Press Space to start • Press Space again to stop</div>
+
+    <div class="controls">
+      <button id="actionButton" type="button" aria-keyshortcuts="Space">Start / Stop (Space)</button>
+    </div>
+  </main>
+
+  <div id="signOverlay" class="overlay" aria-modal="true" role="dialog" hidden>
+    <div class="sign">PAIS CALES</div>
+  </div>
+
+  <script src="/workspace/script.js" defer></script>
+</body>
+</html>
