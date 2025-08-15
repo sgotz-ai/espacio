@@ -1,4 +1,4 @@
-# 5.5 Second Challenge
+# 3.14 Second Challenge
 
 A tiny web game: start and stop the chronometer with Space to land exactly at 3.14 seconds.
 
